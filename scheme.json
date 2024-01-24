@@ -1,0 +1,23 @@
+{
+    "commands": [
+        {
+            "name": "start",
+            "description": "Start command",
+            "aliases": [
+                "start"
+            ],
+            "action": "start_message_action"
+        }
+    ],
+
+    "actions": [
+        {
+            "name": "start_message_action",
+            "description": "Start message action",
+            "proccess": {
+                "type": "message",
+                "message": "Hello, {{username}}!"
+            }
+        }
+    ]
+}
