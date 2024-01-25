@@ -16,7 +16,7 @@
             "description": "Start message action",
             "proccess": {
                 "type": "message",
-                "message": "Hello, {{username}}!"
+                "message": "Hello, @{{username}}, {{first_name}} {{last_name}}!"
             }
         }
     ]

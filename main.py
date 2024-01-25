@@ -34,6 +34,10 @@ def replace_placeholders(message_content, placeholders):
     Replace placeholders in the message content with their corresponding values.
     """
     for placeholder, value in placeholders.items():
+
+        if value is None:
+            value = ''
+
         message_content = message_content.replace(placeholder, value)
     return message_content
 
@@ -45,6 +49,8 @@ def process_message(action, message):
         message_content = action['proccess']['message']
         placeholders = {
             '{{username}}': message.from_user.username,
+            '{{first_name}}': message.from_user.first_name,
+            '{{last_name}}': message.from_user.last_name,
             # Add more placeholders and their corresponding values here
         }
         response_message = replace_placeholders(message_content, placeholders)
