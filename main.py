@@ -1,3 +1,7 @@
+"""
+This module is responsible for managing bot's core functionality.
+"""
+
 import os
 import json
 import dotenv
