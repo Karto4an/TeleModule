@@ -29,12 +29,25 @@ def get_action(action_name):
             return action
     return None
 
+def replace_placeholders(message_content, placeholders):
+    """
+    Replace placeholders in the message content with their corresponding values.
+    """
+    for placeholder, value in placeholders.items():
+        message_content = message_content.replace(placeholder, value)
+    return message_content
+
 def process_message(action, message):
     """
     Process the message based on the action's content.
     """
     if action['proccess']['type'] == 'message':
-        response_message = action['proccess']['message'].replace('{{username}}', message.from_user.username)
+        message_content = action['proccess']['message']
+        placeholders = {
+            '{{username}}': message.from_user.username,
+            # Add more placeholders and their corresponding values here
+        }
+        response_message = replace_placeholders(message_content, placeholders)
         bot.send_message(message.chat.id, response_message)
 
 def register_handler(command):
